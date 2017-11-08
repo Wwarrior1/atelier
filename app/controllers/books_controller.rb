@@ -9,9 +9,6 @@ class BooksController < ApplicationController
   def new
   end
 
-  def edit
-  end
-
   def create
     if new_book.save
       redirect_to books_path
@@ -21,9 +18,6 @@ class BooksController < ApplicationController
   end
 
   def show
-  end
-
-  def destroy
   end
 
   private
