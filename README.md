@@ -1,24 +1,22 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Configuration
+- `Ruby 2.3.3`
+- `Rails 5.1.4`
 
-Things you may want to cover:
+## Setup
 
-* Ruby version
+### Database
+- **Postgres** example configuration file **config/database.yml.example**
+- `rake db:setup`, `rake db:migrate`, `rake db:seed`
 
-* System dependencies
+### Running
+- `rails s`
+- `localhost:3000`
 
-* Configuration
+## Other
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+### Useful commands    
+- `bundle update / install (or simply 'bundle') / outdated / clean / check`
+- `gem list / cleanup / outdated / check / updated`
+- `rake -T`
