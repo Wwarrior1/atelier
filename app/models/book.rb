@@ -25,6 +25,14 @@ class Book < ApplicationRecord
     reservations.find_by(user: user, status: 'TAKEN').present?
   end
 
+  def available_reservation
+    reservations.find_by(status: 'AVAILABLE')
+  end
+
+  def next_in_queue
+    reservations.where(status: 'RESERVED').order(created_at: :asc).first
+  end
+
   private
 
   def not_taken?
@@ -43,11 +51,4 @@ class Book < ApplicationRecord
     reservations.find_by(status: 'PENDING')
   end
 
-  def available_reservation
-    reservations.find_by(status: 'AVAILABLE')
-  end
-
-  def next_in_queue
-    reservations.where(status: 'RESERVED').order(created_at: :asc).first
-  end
 end

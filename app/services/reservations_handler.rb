@@ -12,6 +12,8 @@ class ReservationsHandler
     else
       book.reservations.create(user: user, status: 'TAKEN')
     end
+
+    UserMailer.confirm_email(user, book).deliver_now
   end
 
   def reserve(book)
@@ -23,7 +25,7 @@ class ReservationsHandler
     return unless book.can_give_back?(user)
     ActiveRecord::Base.transaction do
       book.reservations.find_by(status: 'TAKEN').update_attributes(status: 'RETURNED')
-      book.next_in_queue.update_attributes(status: 'AVAILABLE') if next_in_queue(book).present?
+      book.next_in_queue.update_attributes(status: 'AVAILABLE') if book.next_in_queue.present?
     end
   end
 
