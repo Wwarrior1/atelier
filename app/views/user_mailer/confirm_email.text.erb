@@ -1,0 +1,3 @@
+Cześć <%= @user.email %> !
+Wypożyczyłeś: <%= link_to @book.title, book_url(@book.id, host: "localhost:3000") %>
+(kategoria: <%= @book.category.name %>, liczba stron: <%= @book.page_count %>)
