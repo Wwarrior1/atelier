@@ -13,7 +13,7 @@ class ReservationsHandler
       book.reservations.create(user: user, status: 'TAKEN')
     end
 
-    UserMailer.confirm_email(user, book).deliver_now
+    # UserMailer.confirm_email(user, book).deliver_now
   end
 
   def reserve(book)
