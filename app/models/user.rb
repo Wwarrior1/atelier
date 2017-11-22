@@ -5,4 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :reservations
+
+  def adult?
+    (Date.today - date_of_birth).to_i / 365 >= 18
+  end
 end

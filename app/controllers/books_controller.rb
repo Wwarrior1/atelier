@@ -33,7 +33,8 @@ class BooksController < ApplicationController
   private
 
   def load_books
-    @books = Book.all
+    # @books = Book.all
+    @books = Book.for_user(current_user)
   end
 
   def load_book

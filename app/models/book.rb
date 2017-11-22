@@ -1,9 +1,20 @@
 class Book < ApplicationRecord
+  extend ActiveHash::Associations::ActiveRecordExtensions
   has_many :reservations
   has_many :borrowers, through: :reservations, source: :user
   belongs_to :category
 
   # statuses: AVAILABLE, TAKEN, RESERVED, EXPIRED, CANCELED, RETURNED
+
+  def self.for_user(user)
+    #Book.for_user(current_user)
+    if user.adult?
+      Book.all
+    else
+      ids = Category.where(adult_only: user.adult?).map(&:id)
+      Book.where(category_id: ids)
+    end
+  end
 
   def category_name
     category.try(:name)
