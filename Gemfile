@@ -8,7 +8,7 @@ end
 gem 'devise'
 
 gem 'rails', '~> 5.1.2'
-gem 'pg'
+# gem 'pg'
 gem 'sqlite3'
 gem 'puma', '~> 3.7'
 gem 'sass-rails', '~> 5.0'
