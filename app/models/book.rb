@@ -28,7 +28,8 @@ class Book < ApplicationRecord
   end
 
   def can_give_back?(user)
-    reservations.find_by(user: user, status: 'TAKEN').present?
+    ::GivenBackPolicy.new(user: user, book: self).applies?
+    # reservations.find_by(user: user, status: 'TAKEN').present?
   end
 
   def give_back
@@ -38,6 +39,7 @@ class Book < ApplicationRecord
     end
   end
 
+  # TODO - test it
   def can_reserve?(user)
     reservations.find_by(user: user, status: 'RESERVED').nil?
   end
